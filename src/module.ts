@@ -1,4 +1,4 @@
-import { SPCFactoryForm } from './spc-factory-form';
+import { SPCFactoryForm } from './SPCFactoryForm';
 
 console.log('SPC Factory module loaded.');
 

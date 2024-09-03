@@ -1,9 +1,10 @@
-import { SPCFactoryForm } from './spc-factory-form.js';
+import { SPCFactoryForm } from './spc-factory-form';
 
 console.log('SPC Factory module loaded.');
 
 Hooks.on(
   'renderActorDirectory',
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
   (app: ActorDirectory, html: JQuery<HTMLElement>, data: any) => {
     console.log('Actor directory is being rendered');
 
@@ -25,5 +26,5 @@ Hooks.on(
     button.addEventListener('click', () => {
       new SPCFactoryForm().render(true);
     });
-  },
+  }
 );

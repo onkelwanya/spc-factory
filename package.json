@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/**/*.{ts,js}",
     "format": "prettier --write src/**/*.{ts,js} && prettier --write dist/**/*.js",
-    "build": "npx tsc && prettier --write dist/**/*.{ts,js}"
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
@@ -22,9 +22,13 @@
     "eslint-plugin-prettier": "^5.2.1",
     "globals": "^15.9.0",
     "prettier": "^3.3.3",
-    "typescript-eslint": "^8.4.0"
+    "ts-loader": "^9.5.1",
+    "typescript-eslint": "^8.4.0",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "axios": "^1.7.7",
     "typescript": "^5.5.4"
   }
 }

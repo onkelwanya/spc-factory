@@ -1,19 +1,23 @@
 {
-    "compilerOptions": {
-      "target": "es6",
-      "module": "es6",
-      "checkJs": true,
-      "baseUrl": ".",
-      "paths": {
-        "*": ["node_modules/*", "src/types/*"]
-      },
-      "typeRoots": ["node_modules/@league-of-foundry-developers/foundry-vtt-types"],
-      "allowJs": true,
-      "esModuleInterop": true,
-      "moduleResolution": "node",
-      "strict": true
-    },
-    "include": ["src/**/*.js"],
-    "exclude": ["node_modules", "dist"]
-  }
-  
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6",
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": false,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "types": [
+      "@types/jquery",
+      "@league-of-foundry-developers/foundry-vtt-types"
+    ]
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -7,17 +7,16 @@ module.exports = {
         filename: 'module.js',
         path: path.resolve(__dirname, 'dist'),
     },
-    resolve: {
-        extensions: ['.ts', '.js'],
-    },
     module: {
         rules: [
             {
                 test: /\.ts$/,
                 use: 'ts-loader',
-                exclude: /node_modules/,
-            },
-        ],
+                exclude: /node_modules/
+            }
+        ]
     },
-    mode: 'development',
-}
+    resolve: {
+        extensions: ['.ts', '.js']
+    }
+};

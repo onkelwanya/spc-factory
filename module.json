@@ -2,7 +2,7 @@
   "id": "spc-factory",
   "title": "SPC Factory",
   "description": "A module to create SPCs for Vampire: The Masquerade 5e.",
-  "version": "1.0.0",
+  "version": "0.5.0",
   "authors": [
     {
       "name": "Jan",
@@ -27,10 +27,10 @@
       }
     ]
   },
-  "url": "https://github.com/yourusername/spc-factory",
-  "manifest": "https://github.com/yourusername/spc-factory/releases/latest/download/module.json",
-  "download": "https://github.com/yourusername/spc-factory/releases/download/v1.0.0/spc-factory.zip",
+  "url": "https://github.com/onkelwanya/spc-factory",
+  "manifest": "https://github.com/onkelwanya/spc-factory/releases/latest/download/module.json",
+  "download": "https://github.com/onkelwanya/spc-factory/releases/download/0.5.0/spc-factory.zip",
   "readme": "README.md",
-  "bugs": "https://github.com/yourusername/spc-factory/issues",
-  "changelog": "https://github.com/yourusername/spc-factory/releases"
+  "bugs": "https://github.com/onkelwanya/spc-factory/issues",
+  "changelog": "https://github.com/onkelwanya/spc-factory/releases"
 }

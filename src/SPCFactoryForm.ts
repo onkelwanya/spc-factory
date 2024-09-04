@@ -50,6 +50,13 @@ export class SPCFactoryForm extends FormApplication<
       const name = parsedContent.name;
       const traits = (parsedContent.traits as string[]) || [];
       const background = (parsedContent.background as string[]) || [];
+      const standardDicePools = parsedContent.standarddicepools;
+      const exceptionalDicePools = parsedContent.exceptionaldicepools;
+      const disciplines =
+        formData.species !== 'mortal' ? parsedContent.disciplines : null;
+      const generalDifficulties = parsedContent.generaldifficulty;
+      const health = parsedContent.health;
+      const willpower = parsedContent.willpower;
 
       console.log('Traits:', traits);
       console.log('Background:', background);
@@ -75,6 +82,18 @@ export class SPCFactoryForm extends FormApplication<
         type: 'spc',
         system: {
           notes: description,
+          generaldifficulty: generalDifficulties,
+          health: {
+            max: health.max,
+            value: health.value,
+          },
+          willpower: {
+            max: willpower.max,
+            value: willpower.value,
+          },
+          standarddicepools: standardDicePools,
+          exceptionaldicepools: exceptionalDicePools,
+          disciplines: disciplines,
           spcType: formData.species,
           gamesystem: 'mortal',
         },

@@ -4,7 +4,7 @@ export interface SPCActorData {
   img?: string;
   system: Partial<{
     notes: string;
-    generaldifficulty?: {
+    generaldifficulty: {
       strongest: {
         value: number | null;
       };
@@ -12,19 +12,19 @@ export interface SPCActorData {
         value: number | null;
       };
     };
-    health?: {
-      aggravated: number;
-      superficial: number;
+    health: {
+      aggravated?: number;
+      superficial?: number;
       max: number;
       value: number;
     };
-    willpower?: {
-      aggravated: number;
-      superficial: number;
+    willpower: {
+      aggravated?: number;
+      superficial?: number;
       max: number;
       value: number;
     };
-    standarddicepools?: {
+    standarddicepools: {
       physical: {
         value: number | null;
       };
@@ -42,23 +42,6 @@ export interface SPCActorData {
       };
     };
     disciplines?: {
-      [key: string]: {
-        description: string;
-        value: number;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        powers: any[];
-        visible: boolean;
-      };
-    };
-    gifts?: {
-      [key: string]: {
-        description: string;
-        value: number;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        powers: any[];
-      };
-    };
-    edges?: {
       [key: string]: {
         description: string;
         value: number;

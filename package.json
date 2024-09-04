@@ -1,6 +1,6 @@
 {
   "name": "spc-factory",
-  "version": "1.0.0",
+  "version": "0.6.0",
   "type": "module",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "lint": "eslint src/**/*.{ts,js}",
     "format": "prettier --write src/**/*.{ts,js} && prettier --write dist/**/*.js",
     "build": "webpack --config webpack.prod.cjs",
-    "build:dev": "webpack --config webpack.dev.cjs"
+    "build:dev": "npm run lint && npm run format && webpack --config webpack.dev.cjs"
   },
   "keywords": [],
   "author": "",

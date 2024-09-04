@@ -1,17 +1,17 @@
 /** Dependency Imports */
 import axios from 'axios';
 
-/** Script Imports */
-import { OPENAI_API_URL, OPENAI_GPT_MODEL } from './constants';
+/** Settings Imports */
+import { getOpenAIApiKey, OPENAI_API_URL, OPENAI_GPT_MODEL } from './settings';
 
 /** Types Imports */
 import { SPCFormData } from './types/SPCFormData';
 
-// TODO: Move to settings in foundry
-const OPENAI_API_KEY =
-  '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';
-
 export async function generateSPCContent(prompt: string) {
+  const OPENAI_API_KEY = getOpenAIApiKey();
+  if (!OPENAI_API_KEY) {
+    ui.notifications?.error('OpenAI API Key is not set. Please configure the key in the module options');
+  }
   try {
     const response = await axios.post(
       OPENAI_API_URL,
@@ -26,6 +26,8 @@ export async function generateSPCContent(prompt: string) {
         },
       }
     );
+
+    
 
     const message = response.data.choices[0].message.content;
     return message;

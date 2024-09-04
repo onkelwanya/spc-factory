@@ -1,6 +1,23 @@
+/** Types Import */
 import { SPCFactoryForm } from './SPCFactoryForm';
 
+/** Settings Import */
+import { getOpenAIApiKey } from './settings';
+
 console.log('SPC Factory module loaded.');
+
+Hooks.on('init', () => {
+  console.log('SPC Factory | Initializing SPC Factory Module');
+
+  (game as Game).settings.register('spc-factory', 'openaiApiKey', {
+    name: 'OpenAI API Key',
+    hint: 'Enter your OpenAI API key to enable this module',
+    scope: 'world',
+    config: true,
+    type: String,
+    default: '',
+  });
+});
 
 Hooks.on(
   'renderActorDirectory',
@@ -24,6 +41,13 @@ Hooks.on(
     }
 
     button.addEventListener('click', () => {
+      const OPENAI_API_KEY = getOpenAIApiKey();
+    if (!OPENAI_API_KEY) {
+      ui.notifications?.error(
+        'OpenAI API Key is not set. Please configure the key in the module options'
+      );
+      return;
+    }
       new SPCFactoryForm().render(true);
     });
   }

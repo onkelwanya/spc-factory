@@ -5,6 +5,9 @@ import { generateSPCContent, createPrompt } from './spcContentGenerator';
 import { SPCActorData } from './types/SPCActorData';
 import { SPCFormData } from './types/SPCFormData';
 
+/** Seetings Imports */
+import { getOpenAIApiKey } from './settings';
+
 export class SPCFactoryForm extends FormApplication<
   FormApplicationOptions,
   SPCFormData
@@ -37,7 +40,14 @@ export class SPCFactoryForm extends FormApplication<
   }
 
   async _updateObject(event: Event, formData: SPCFormData): Promise<void> {
-    console.log('Form data:', formData);
+    const OPENAI_API_KEY = getOpenAIApiKey();
+    if (!OPENAI_API_KEY) {
+      ui.notifications?.error(
+        'OpenAI API Key is not set. Please configure the key in the module options'
+      );
+    }
+
+    console.log('SPC Factory | Form data:', formData);
 
     const prompt = createPrompt(formData);
 

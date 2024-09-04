@@ -1,14 +1,9 @@
+/** Script Imports */
 import { generateSPCContent } from './api';
-import { SPCActorData } from './types/SPCActorData';
 
-interface SPCFormData {
-  name: string;
-  species: string;
-  region: string;
-  age: number;
-  challenge: string;
-  disposition: string;
-}
+/** Type Imports */
+import { SPCActorData } from './types/SPCActorData';
+import { SPCFormData } from './types/SPCFormData';
 
 export class SPCFactoryForm extends FormApplication<
   FormApplicationOptions,
@@ -53,13 +48,11 @@ export class SPCFactoryForm extends FormApplication<
       const parsedContent = JSON.parse(generatedContent);
 
       const name = parsedContent.name;
-      const traits = parsedContent.traits as string[] || [];
-      const background = parsedContent.background as string[] || [];
+      const traits = (parsedContent.traits as string[]) || [];
+      const background = (parsedContent.background as string[]) || [];
 
-      console.log("Traits:", traits);
-      console.log("Background:", background);
-      
-      
+      console.log('Traits:', traits);
+      console.log('Background:', background);
 
       if (ui.notifications) {
         ui.notifications.info(`SPC generated: ${name}`);
@@ -67,8 +60,8 @@ export class SPCFactoryForm extends FormApplication<
         console.warn('Notifications UI is not available.');
       }
 
-      const traitList = traits.map(trait => `<li>${trait}</li>`).join('');
-      const backgroudList = background.map(bg => `<li>${bg}</li>`).join('');
+      const traitList = traits.map((trait) => `<li>${trait}</li>`).join('');
+      const backgroudList = background.map((bg) => `<li>${bg}</li>`).join('');
 
       const description = `
         <b>Age:</b> ${formData.age} years <br><br>
@@ -85,11 +78,10 @@ export class SPCFactoryForm extends FormApplication<
           spcType: formData.species,
           gamesystem: 'mortal',
         },
-      }
+      };
 
       const newActor = await Actor.create(actorData);
       newActor?.sheet?.render(true);
-
     } catch (error) {
       console.error('Failed to generate SPC content:', error);
     }

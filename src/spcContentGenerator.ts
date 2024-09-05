@@ -33,7 +33,7 @@ export async function generateSPCContent(prompt: string) {
     const message = response.data.choices[0].message.content;
     return cleanUpResponse(message);
   } catch (error) {
-    console.error('Error generating SPC content:', error);
+    console.error('SPC Factory | Error generating SPC content:', error);
     throw new Error('Failed to generate content.');
   }
 }

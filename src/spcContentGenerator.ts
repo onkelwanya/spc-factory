@@ -149,9 +149,6 @@ export function createPrompt(formData: SPCFormData): string {
   return prompt.trim();
 }
 
-
 function cleanUpResponse(response: string): string {
-  return response
-    .replace(/```json/g, '')
-    .replace(/```/g, '');
+  return response.replace(/```json/g, '').replace(/```/g, '');
 }

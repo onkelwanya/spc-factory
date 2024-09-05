@@ -31,7 +31,7 @@ export async function generateSPCContent(prompt: string) {
     );
 
     const message = response.data.choices[0].message.content;
-    return message;
+    return cleanUpResponse(message);
   } catch (error) {
     console.error('Error generating SPC content:', error);
     throw new Error('Failed to generate content.');
@@ -44,6 +44,7 @@ export function createPrompt(formData: SPCFormData): string {
 
   const characterDetails = `
   Please create a character with the following details:
+  ${formData.name != null ? '**Name**: ' + formData.name : '**Name**: No name provided - generate a fitting name'}
   - **Region of Origin**: ${formData.country}
   - **Species**: ${formData.species}
   - **Challenge Level**: ${formData.challenge}
@@ -146,4 +147,8 @@ export function createPrompt(formData: SPCFormData): string {
   `;
 
   return prompt.trim();
+}
+
+function cleanUpResponse(response: string): string {
+  return response.replace(/```json/g, '').replace(/```/g, '');
 }

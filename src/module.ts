@@ -1,3 +1,6 @@
+/** Dependency Imports */
+import Handlebars from 'handlebars';
+
 /** Types Import */
 import { SPCFactoryForm } from './SPCFactoryForm';
 
@@ -6,8 +9,14 @@ import { getOpenAIApiKey } from './settings';
 
 console.log('SPC Factory module loaded.');
 
+
 Hooks.on('init', () => {
   console.log('SPC Factory | Initializing SPC Factory Module');
+
+  Handlebars.registerHelper('t', (key: string) => {
+    console.log('SPC Factory | Registring t helper function');
+    return (game as Game).i18n.localize(key);
+  });
 
   (game as Game).settings.register('spc-factory', 'openaiApiKey', {
     name: 'OpenAI API Key',
@@ -23,31 +32,27 @@ Hooks.on(
   'renderActorDirectory',
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
   (app: ActorDirectory, html: JQuery<HTMLElement>, data: any) => {
-    console.log('Actor directory is being rendered');
-
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'spc-factory-btn';
     button.textContent = 'SPC Factory';
 
     const headerActions = html.find('.header-actions');
-    console.log('header-actions element:', headerActions);
 
     if (headerActions.length) {
       headerActions.append(button);
-      console.log('SPC Factory button added to the actor directory');
     } else {
-      console.error('Could not find the header-actions element');
+      console.error('SPC Factory | Could not find the header-actions element');
     }
 
     button.addEventListener('click', () => {
       const OPENAI_API_KEY = getOpenAIApiKey();
-    if (!OPENAI_API_KEY) {
-      ui.notifications?.error(
-        'OpenAI API Key is not set. Please configure the key in the module options'
-      );
-      return;
-    }
+      if (!OPENAI_API_KEY) {
+        ui.notifications?.error(
+          'OpenAI API Key is not set. Please configure the key in the module options'
+        );
+        return;
+      }
       new SPCFactoryForm().render(true);
     });
   }

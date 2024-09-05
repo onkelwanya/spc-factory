@@ -8,7 +8,8 @@
     "lint": "eslint src/**/*.{ts,js}",
     "format": "prettier --write src/**/*.{ts,js} && prettier --write dist/**/*.js",
     "build": "webpack --config webpack.prod.cjs",
-    "build:dev": "npm run lint && npm run format && webpack --config webpack.dev.cjs"
+    "build:dev": "npm run lint && npm run format && webpack --config webpack.dev.cjs",
+    "extract-translations": "npx i18next-parser \"src/**/*.{js,ts,hbs}\""
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,8 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "globals": "^15.9.0",
+    "i18next": "^23.14.0",
+    "i18next-parser": "^9.0.2",
     "prettier": "^3.3.3",
     "ts-loader": "^9.5.1",
     "typescript-eslint": "^8.4.0",
@@ -31,6 +34,7 @@
   },
   "dependencies": {
     "axios": "^1.7.7",
+    "handlebars": "^4.7.8",
     "typescript": "^5.5.4"
   }
 }

@@ -10,7 +10,9 @@ import { SPCFormData } from './types/SPCFormData';
 export async function generateSPCContent(prompt: string) {
   const OPENAI_API_KEY = getOpenAIApiKey();
   if (!OPENAI_API_KEY) {
-    ui.notifications?.error('OpenAI API Key is not set. Please configure the key in the module options');
+    ui.notifications?.error(
+      'OpenAI API Key is not set. Please configure the key in the module options'
+    );
   }
   try {
     const response = await axios.post(
@@ -26,8 +28,6 @@ export async function generateSPCContent(prompt: string) {
         },
       }
     );
-
-    
 
     const message = response.data.choices[0].message.content;
     return message;

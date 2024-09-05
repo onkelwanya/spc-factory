@@ -20,7 +20,7 @@ export class SPCFactoryForm extends FormApplication<
     return foundry.utils.mergeObject(super.defaultOptions, {
       id: 'spc-factory-form',
       title: 'SPC Factory',
-      template: 'modules/spc-factory/src/templates/spc-factory.html',
+      template: 'modules/spc-factory/src/templates/spc-factory.hbs',
       classes: ['spc-factory'],
       width: 400,
       height: 'auto',

@@ -1,0 +1,111 @@
+<h1 class="wod5e">{{t "SPC Factory"}}</h1>
+
+<form class="spc-form wod5e">
+    <!-- Name Field -->
+    <div class="form-group">
+        <label for="name">{{t "Name"}}</label>
+        <input type="text" name="name" value="{{name}}" placeholder="{{t "Leave empty to auto-generate"}}" />
+    </div>
+
+    <!-- Species Selection -->
+    <div class="form-group">
+        <label>{{t "Species"}}</label>
+        <div class="form-fields">
+            <input type="radio" name="species" id="species-mortal" value="mortal" {{#if (eq species 'mortal')}}
+                checked
+            {{/if}}>
+            <label for="species-mortal">{{t "Mortal"}}</label>
+
+            <input type="radio" name="species" id="species-vampire" value="vampire" {{#if (eq species 'vampire')}}
+               checked
+            {{/if}}>
+            <label for="species-vampire">{{t "Vampire"}}</label>
+
+            <input type="radio" name="species" id="species-ghoul" value="ghoul" {{#if (eq species 'ghoul')}}
+               checked
+            {{/if}}>
+            <label for="species-ghoul">{{t "Ghoul"}}</label>
+        </div>
+    </div>
+
+    <!-- Region Selection -->
+    <div class="form-group">
+        <label>{{t "Origin Country"}}</label>
+        <select name="region" id="region-select">
+            {{#each regions}}
+            <option value="{{this.value}}" {{#if (eq ../region this.value)}}
+                selected
+            {{/if}}>{{this.label}}</option>
+            {{/each}}
+        </select>
+    </div>
+
+    <!-- Country Selection (dependant on the selected region) -->
+    <div class="form-group">
+        <label>{{t "Country"}}</label>
+        <select name="country" id="country-select">
+            {{#each countries}}
+               <option value="{{this}}" {{#if (eq ../country this)}}
+                  selected
+               {{/if}}>{{this}}</option>
+            {{/each}}
+        </select>
+    </div>
+
+    <!-- Clan Selection (for Vampires) -->
+    {{#if (or (eq species 'vampire') (eq species 'ghoul'))}}
+       <div class="form-group">
+        <label>{{t "Clan"}}</label>
+        <select name="clan">
+            {{#each clans}}
+               <option value="{{this}}" {{#if (eq ../clan this)}}
+                  selected
+               {{/if}}>{{this}}</option>
+            {{/each}}
+        </select>
+       </div>
+    <!-- Clan Selection (for Ghouls) -->
+    {{#if (eq species 'ghoul')}}
+       <div class="form-group">
+        <label>{{t "Domitor's Clan"}}</label>
+        <select name="domitorClan">
+            <option value="{{this}}" {{#if (eq ../domitorClan this)}}
+               selected
+            {{/if}}>{{this}}</option>
+        </select>
+       </div>
+    {{/if}}
+    {{/if}}
+
+    <!-- Challenge Level Selection -->
+    <div class="form-group">
+        <label>{{t "Challenge Level"}}</label>
+        <div class="form-fields">
+            <input type="radio" name="challenge" id="challenge-none" value="none" {{#if (eq challenge 'none')}}
+               checked
+            {{/if}}>
+            <label for="challenge-none">{{t "None"}}</label>
+
+            <input type="radio" name="challenge" id="challenge-minor" value="minor" {{#if (eq challenge 'minor')}}
+               checked
+            {{/if}}>
+            <label for="challenge-minor">{{t "Minor"}}</label>
+
+            <input type="radio" name="challenge" id="challenge-medium" value="medium" {{#if (eq challenge 'medium')}}
+               checked
+            {{/if}}>
+            <label for="challenge-medium">{{t "Medium"}}</label>
+
+            <input type="radio" name="challenge" id="challenge-major" value="major" {{#if (eq challenge 'major')}}
+               checked
+            {{/if}}>
+            <label for="challenge-major">{{t "Major"}}</label>
+        </div>
+    </div>
+
+    <!-- Submit Button and Loading Spinner -->
+    <div class="form-group">
+        <button type="submit">{{t "Generate SPC"}}</button>
+        <div class="spinner" id="loading-spinner" style="display: none;">{{t "Loading..."}}</div>
+    </div>
+</form>

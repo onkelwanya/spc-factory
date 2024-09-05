@@ -1,6 +1,9 @@
 /** Script Imports */
 import { generateSPCContent, createPrompt } from './spcContentGenerator';
-import { handleRegionAndCountrySelection, handleSpeciesAndClanSelection } from './spcFormHandlers';
+import {
+  handleRegionAndCountrySelection,
+  handleSpeciesAndClanSelection,
+} from './spcFormHandlers';
 
 /** Type Imports */
 import { SPCActorData } from './types/SPCActorData';

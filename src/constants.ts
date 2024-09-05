@@ -34,7 +34,7 @@ export const REGIONS = [
 ];
 
 /** SPC Generator List of Countries by Region */
-export const COUNTRIES_BY_REGION: { [key: string]: string [] } = {
+export const COUNTRIES_BY_REGION: { [key: string]: string[] } = {
   'western-europe': [
     'France',
     'Germany',

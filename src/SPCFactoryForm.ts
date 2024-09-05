@@ -6,7 +6,12 @@ import { SPCActorData } from './types/SPCActorData';
 import { SPCFormData } from './types/SPCFormData';
 
 /** Seetings Imports */
-import { CLANS, COUNTRIES_BY_REGION, getOpenAIApiKey, REGIONS } from './settings';
+import {
+  CLANS,
+  COUNTRIES_BY_REGION,
+  REGIONS,
+} from './constants';
+import { getOpenAIApiKey } from './foundrySettingsGetter';
 
 export class SPCFactoryForm extends FormApplication<
   FormApplicationOptions,
@@ -38,6 +43,7 @@ export class SPCFactoryForm extends FormApplication<
       age: 30,
       challenge: 'none',
       disposition: 'neutral',
+      country: 'Germany',
     };
   }
 
@@ -84,7 +90,7 @@ export class SPCFactoryForm extends FormApplication<
 
       const description = `
         <b>Age:</b> ${formData.age} years <br><br>
-        <b>Region of Origin:</b> ${formData.region} <br><br>
+        <b>Country of Origin:</b> ${formData.country} <br><br>
         <b>Traits:</b><br><ul>${traitList}</ul><br>
         <b>Backgroud:</b><br><ul>${backgroudList}</ul><br>
       `;

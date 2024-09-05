@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 /** Settings Imports */
-import { getOpenAIApiKey, OPENAI_API_URL, OPENAI_GPT_MODEL } from './settings';
+import { getOpenAIApiKey, OPENAI_API_URL, OPENAI_GPT_MODEL } from './constants';
 
 /** Types Imports */
 import { SPCFormData } from './types/SPCFormData';

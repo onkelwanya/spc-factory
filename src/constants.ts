@@ -2,12 +2,7 @@
 export const OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions';
 export const OPENAI_GPT_MODEL = 'gpt-3.5-turbo';
 
-/** FoundryVTT Setting getters */
-export function getOpenAIApiKey(): string {
-  return (game as Game).settings.get('spc-factory', 'openaiApiKey') as string;
-}
-
-/** SPC Generator List of Clans */
+/** SPC Generator list of clans */
 export const CLANS = [
   'Ventrue',
   'Toreador',
@@ -20,13 +15,13 @@ export const CLANS = [
   'Tzimisce',
   'Ravnos',
   'Ministry',
-  'Giovanni',
+  'Hecata',
   'Banu Haqim',
   'Caitiff',
   'Thin-Blood',
 ];
 
-/** SPC Generator List of Regions */
+/** SPC Generator list of regions */
 export const REGIONS = [
   { label: 'Western Europe', value: 'western-europe' },
   { label: 'Eastern Europe', value: 'eastern-europe' },
@@ -136,4 +131,23 @@ export const COUNTRIES_BY_REGION = {
     'Micronesia',
     'Palau',
   ],
+};
+
+/** SPC Generator disciplines by clan */
+export const DISCIPLINES = {
+  'Banu Haqim': ['Blood Sorcery', 'Celerity', 'Obfuscate'],
+  Brujah: ['Celerity', 'Potence', 'Presence'],
+  Gangrel: ['Animalism', 'Fortitude', 'Protean'],
+  Caitiff: [],
+  Hecata: ['Auspex', 'Fortitude', 'Oblivion'],
+  Lasombra: ['Dominate', 'Oblivion', 'Potence'],
+  Malkavian: ['Auspex', 'Dominate', 'Obfuscate'],
+  Ministry: ['Protean', 'Obfuscate', 'Presence'],
+  Nosferatu: ['Animalism', 'Obfuscate', 'Potence'],
+  Ravnos: ['Animalism', 'Obfuscate', 'Presence'],
+  Toreador: ['Auspex', 'Celerity', 'Presence'],
+  Tremere: ['Auspex', 'Dominate', 'Blood Sorcery'],
+  Tzimisce: ['Animalism', 'Dominate', 'Protean'],
+  Ventrue: ['Dominate', 'Fortitude', 'Presence'],
+  'Thin-Blood': ['Thin-Blood Alchemy'],
 };

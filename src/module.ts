@@ -2,10 +2,9 @@
 import { SPCFactoryForm } from './SPCFactoryForm';
 
 /** Settings Import */
-import { getOpenAIApiKey } from './settings';
+import { getOpenAIApiKey } from './foundrySettingsGetter';
 
 console.log('SPC Factory module loaded.');
-
 
 Hooks.on('init', () => {
   console.log('SPC Factory | Initializing SPC Factory Module');

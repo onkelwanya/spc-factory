@@ -19,24 +19,36 @@ jobs:
 
             - name: Install dependencies
               run: npm install
+
+            - name: Get version from module.json
+              id: get_version
+              run: echo "VERSION=$(jq -r '.version' module.json)" >> $GITHUB_ENV
             
             - name: Build the project (Production)
               run: npm run build
+
+            - name: Generate Changelog
+              id: generate_changelog
+              run: |
+                LAST_TAG=$(git describe --tags --abbrev=0)
+                echo "Last tag: $LAST_TAG"
+                echo "Generating changelog since $LAST_TAG"
+                git log "$LAST_LOG"..HEAD --pretty=format:"%s" > changelog.txt
+                echo "Changelog content:"
+                cat changelog.txt
             
             - name: Package the module
               run: zip -r spc-factory.zip dist/ module.json README.md
 
             - name: Create GitHub Release
               id: create_release
-              uses: comnoco/create-release-action@v2.0.5
+              uses: actions/create-release@v1
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                tag_name: '0.5.0'
-                release_name: Release v0.5.0
-                body: |
-                    ## What's changed
-                    - List of changes
+                tag_name: ${{ env.VERSION }}
+                release_name: Release v${{ env.VERSION }}
+                body_path: changelog.txt
                 draft: false
                 prerelease: true
             

@@ -17,6 +17,14 @@ jobs:
               with:
                 node-version: '16'
 
+            - name: Cache NPM dependencies
+              uses: actions/cache@v3
+              with:
+                path: ~/.npm
+                key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+                restore-keys: |
+                  ${{ runner.os }}-node-
+
             - name: Install dependencies
               run: npm install
 
@@ -30,10 +38,15 @@ jobs:
             - name: Generate Changelog
               id: generate_changelog
               run: |
-                LAST_TAG=$(git describe --tags --abbrev=0)
-                echo "Last tag: $LAST_TAG"
-                echo "Generating changelog since $LAST_TAG"
-                git log "$LAST_LOG"..HEAD --pretty=format:"%s" > changelog.txt
+                if git tag --list | grep .; then
+                  LAST_TAG=$(git describe --tags --abbrev=0)
+                  echo "Last tag: $LAST_TAG"
+                  echo "Generating changelog since $LAST_TAG..."
+                  git log "$LAST_TAG"..HEAD --pretty=format:"%s" > changelog.txt
+                else
+                  echo "No previous tags found. Generating changelog from all commits..."
+                  git log --pretty=format:"%s" > changelog.txt
+                fi
                 echo "Changelog content:"
                 cat changelog.txt
             

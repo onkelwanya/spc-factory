@@ -2,7 +2,8 @@
 import axios from 'axios';
 
 /** Settings Imports */
-import { getOpenAIApiKey, OPENAI_API_URL, OPENAI_GPT_MODEL } from './constants';
+import { OPENAI_API_URL, OPENAI_GPT_MODEL } from './constants';
+import { getOpenAIApiKey } from './foundrySettingsGetter';
 
 /** Types Imports */
 import { SPCFormData } from './types/SPCFormData';
@@ -43,7 +44,7 @@ export function createPrompt(formData: SPCFormData): string {
 
   const characterDetails = `
   Please create a character with the following details:
-  - **Region of Origin**: ${formData.region}
+  - **Region of Origin**: ${formData.country}
   - **Species**: ${formData.species}
   - **Challenge Level**: ${formData.challenge}
   - **Disposition**: ${formData.disposition}

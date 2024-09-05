@@ -6,11 +6,7 @@ import { SPCActorData } from './types/SPCActorData';
 import { SPCFormData } from './types/SPCFormData';
 
 /** Seetings Imports */
-import {
-  CLANS,
-  COUNTRIES_BY_REGION,
-  REGIONS,
-} from './constants';
+import { CLANS, COUNTRIES_BY_REGION, REGIONS } from './constants';
 import { getOpenAIApiKey } from './foundrySettingsGetter';
 
 export class SPCFactoryForm extends FormApplication<

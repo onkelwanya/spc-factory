@@ -1,6 +1,3 @@
-/** Dependency Imports */
-import Handlebars from 'handlebars';
-
 /** Types Import */
 import { SPCFactoryForm } from './SPCFactoryForm';
 
@@ -12,11 +9,6 @@ console.log('SPC Factory module loaded.');
 
 Hooks.on('init', () => {
   console.log('SPC Factory | Initializing SPC Factory Module');
-
-  Handlebars.registerHelper('t', (key: string) => {
-    console.log('SPC Factory | Registring t helper function');
-    return (game as Game).i18n.localize(key);
-  });
 
   (game as Game).settings.register('spc-factory', 'openaiApiKey', {
     name: 'OpenAI API Key',

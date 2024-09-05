@@ -6,7 +6,7 @@ import { SPCActorData } from './types/SPCActorData';
 import { SPCFormData } from './types/SPCFormData';
 
 /** Seetings Imports */
-import { getOpenAIApiKey } from './settings';
+import { CLANS, COUNTRIES_BY_REGION, getOpenAIApiKey, REGIONS } from './settings';
 
 export class SPCFactoryForm extends FormApplication<
   FormApplicationOptions,
@@ -32,7 +32,9 @@ export class SPCFactoryForm extends FormApplication<
     return {
       name: '',
       species: 'human',
-      region: 'western-europe',
+      clans: CLANS,
+      regions: REGIONS,
+      countries: COUNTRIES_BY_REGION['western-europe'],
       age: 30,
       challenge: 'none',
       disposition: 'neutral',

@@ -68,7 +68,7 @@ export class SPCFactoryForm extends FormApplication<
 
     try {
       const generatedContent = await generateSPCContent(prompt);
-      console.log('generated content:', generatedContent);
+      console.log('SPC Factory | Generated Content:', generatedContent);
 
       const parsedContent = JSON.parse(generatedContent);
 
@@ -83,8 +83,8 @@ export class SPCFactoryForm extends FormApplication<
       const health = parsedContent.health;
       const willpower = parsedContent.willpower;
 
-      console.log('Traits:', traits);
-      console.log('Background:', background);
+      console.log('SPC Factory | Traits:', traits);
+      console.log('SPC Factory | Background:', background);
 
       if (ui.notifications) {
         ui.notifications.info(`SPC generated: ${name}`);
@@ -127,7 +127,7 @@ export class SPCFactoryForm extends FormApplication<
       const newActor = await Actor.create(actorData);
       newActor?.sheet?.render(true);
     } catch (error) {
-      console.error('Failed to generate SPC content:', error);
+      console.error('SPC Factory | Failed to generate SPC content:', error);
     }
   }
 }

@@ -2,7 +2,8 @@
 import axios from 'axios';
 
 /** Settings Imports */
-import { getOpenAIApiKey, OPENAI_API_URL, OPENAI_GPT_MODEL } from './settings';
+import { OPENAI_API_URL, OPENAI_GPT_MODEL } from './constants';
+import { getOpenAIApiKey } from './foundrySettingsGetter';
 
 /** Types Imports */
 import { SPCFormData } from './types/SPCFormData';
@@ -10,7 +11,9 @@ import { SPCFormData } from './types/SPCFormData';
 export async function generateSPCContent(prompt: string) {
   const OPENAI_API_KEY = getOpenAIApiKey();
   if (!OPENAI_API_KEY) {
-    ui.notifications?.error('OpenAI API Key is not set. Please configure the key in the module options');
+    ui.notifications?.error(
+      'OpenAI API Key is not set. Please configure the key in the module options'
+    );
   }
   try {
     const response = await axios.post(
@@ -27,8 +30,6 @@ export async function generateSPCContent(prompt: string) {
       }
     );
 
-    
-
     const message = response.data.choices[0].message.content;
     return message;
   } catch (error) {
@@ -43,7 +44,7 @@ export function createPrompt(formData: SPCFormData): string {
 
   const characterDetails = `
   Please create a character with the following details:
-  - **Region of Origin**: ${formData.region}
+  - **Region of Origin**: ${formData.country}
   - **Species**: ${formData.species}
   - **Challenge Level**: ${formData.challenge}
   - **Disposition**: ${formData.disposition}

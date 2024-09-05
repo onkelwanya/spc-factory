@@ -1,12 +1,17 @@
 /** Script Imports */
 import { generateSPCContent, createPrompt } from './spcContentGenerator';
+import {
+  handleRegionAndCountrySelection,
+  handleSpeciesAndClanSelection,
+} from './spcFormHandlers';
 
 /** Type Imports */
 import { SPCActorData } from './types/SPCActorData';
 import { SPCFormData } from './types/SPCFormData';
 
 /** Seetings Imports */
-import { getOpenAIApiKey } from './settings';
+import { CLANS, COUNTRIES_BY_REGION, REGIONS } from './constants';
+import { getOpenAIApiKey } from './foundrySettingsGetter';
 
 export class SPCFactoryForm extends FormApplication<
   FormApplicationOptions,
@@ -20,22 +25,32 @@ export class SPCFactoryForm extends FormApplication<
     return foundry.utils.mergeObject(super.defaultOptions, {
       id: 'spc-factory-form',
       title: 'SPC Factory',
-      template: 'modules/spc-factory/src/templates/spc-factory.html',
+      template: 'modules/spc-factory/src/templates/spc-factory.hbs',
       classes: ['spc-factory'],
-      width: 400,
+      width: 450,
       height: 'auto',
       closeOnSubmit: true,
     }) as FormApplicationOptions;
+  }
+
+  activateListeners(html: JQuery<HTMLElement>): void {
+    super.activateListeners(html);
+
+    handleRegionAndCountrySelection(html);
+    handleSpeciesAndClanSelection(html);
   }
 
   async getData(): Promise<SPCFormData> {
     return {
       name: '',
       species: 'human',
-      region: 'western-europe',
+      clans: CLANS,
+      regions: REGIONS,
+      countries: COUNTRIES_BY_REGION['western-europe'],
       age: 30,
       challenge: 'none',
       disposition: 'neutral',
+      country: 'Germany',
     };
   }
 
@@ -82,7 +97,7 @@ export class SPCFactoryForm extends FormApplication<
 
       const description = `
         <b>Age:</b> ${formData.age} years <br><br>
-        <b>Region of Origin:</b> ${formData.region} <br><br>
+        <b>Country of Origin:</b> ${formData.country} <br><br>
         <b>Traits:</b><br><ul>${traitList}</ul><br>
         <b>Backgroud:</b><br><ul>${backgroudList}</ul><br>
       `;

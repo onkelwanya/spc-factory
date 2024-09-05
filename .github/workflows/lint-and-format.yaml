@@ -1,0 +1,53 @@
+name: Lint and Format
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Cache NPM dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run Prettier
+        run: npm run format:ci
+      
+      - name: Verify Prettier
+        run: git diff --exit-code
+        continue-on-error: false
+      
+      - name: Verify ESLint
+        run: npm run lint
+        continue-on-error: false
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.name "Github Actions"
+          git config --local user.email "actions@github.com"
+          git add .
+          git commit -m "Apply code formatting in GitHub Actions"
+          git push
+        if: ${{ steps.format.outputs.changes == 'true' }}

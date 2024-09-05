@@ -7,8 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/**/*.{ts,js}",
     "format": "prettier --write src/**/*.{ts,js} && prettier --write dist/**/*.js",
+    "format:ci": "prettier --write src/**/*.{ts,js}",
     "build": "webpack --config webpack.prod.cjs",
-    "build:dev": "npm run lint && npm run format && webpack --config webpack.dev.cjs"
+    "build:dev": "npm run lint && npm run format && webpack --config webpack.dev.cjs",
+    "extract-translations": "npx i18next-parser \"src/**/*.{js,ts,hbs}\""
   },
   "keywords": [],
   "author": "",
@@ -31,6 +33,7 @@
   },
   "dependencies": {
     "axios": "^1.7.7",
+    "handlebars": "^4.7.8",
     "typescript": "^5.5.4"
   }
 }

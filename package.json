@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/**/*.{ts,js}",
     "format": "prettier --write src/**/*.{ts,js} && prettier --write dist/**/*.js",
+    "format:ci": "prettier --write src/**/*.{ts,js}",
     "build": "webpack --config webpack.prod.cjs",
     "build:dev": "npm run lint && npm run format && webpack --config webpack.dev.cjs",
     "extract-translations": "npx i18next-parser \"src/**/*.{js,ts,hbs}\""

@@ -1,92 +1,88 @@
-<h1 class="wod5e">SPC Factory</h1>
+<h1 class="wod5e sheet-header">SPC Factory</h1>
 
-<form class="spc-form wod5e">
+<form class="spc-form wod5e sheet-body">
     <!-- Name Field -->
     <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" name="name" value="{{name}}" placeholder="Leave empty to auto-generate" />
+        <label for="name" class="wod5e">Name</label>
+        <input type="text" name="name" value="{{name}}" class="wod5e" placeholder="Leave empty to auto-generate" />
     </div>
 
     <!-- Species Selection -->
     <div class="form-group">
-        <label>Species</label>
+        <label class="wod5e">Species</label>
         <div class="form-fields">
-            <input type="radio" name="species" id="species-mortal" value="mortal" {{#if (eq species 'mortal')}} checked {{/if}}>
-            <label for="species-mortal">Mortal</label>
+            <input type="radio" name="species" id="species-mortal" value="mortal" {{#if (eq species 'mortal')}}checked{{/if}}>
+            <label for="species-mortal" class="wod5e">Mortal</label>
 
-            <input type="radio" name="species" id="species-vampire" value="vampire" {{#if (eq species 'vampire')}} checked {{/if}}>
-            <label for="species-vampire">Vampire</label>
+            <input type="radio" name="species" id="species-vampire" value="vampire" {{#if (eq species 'vampire')}}checked{{/if}}>
+            <label for="species-vampire" class="wod5e">Vampire</label>
 
-            <input type="radio" name="species" id="species-ghoul" value="ghoul" {{#if (eq species 'ghoul')}} checked {{/if}}>
-            <label for="species-ghoul">Ghoul</label>
+            <input type="radio" name="species" id="species-ghoul" value="ghoul" {{#if (eq species 'ghoul')}}checked{{/if}}>
+            <label for="species-ghoul" class="wod5e">Ghoul</label>
         </div>
     </div>
 
     <!-- Region Selection -->
     <div class="form-group">
-        <label>Origin Country</label>
-        <select name="region" id="region-select">
+        <label class="wod5e">Origin Country</label>
+        <select name="region" id="region-select" class="wod5e">
             {{#each regions}}
-            <option value="{{this.value}}" {{#if (eq ../region this.value)}} selected {{/if}}>{{this.label}}</option>
+            <option value="{{this.value}}" {{#if (eq ../region this.value)}}selected{{/if}}>{{this.label}}</option>
             {{/each}}
         </select>
     </div>
 
-    <!-- Country Selection (dependant on the selected region) -->
-    <div class="form-group">
-        <label>Country</label>
-        <select name="country" id="country-select">
+    <!-- Country Selection (dependent on the selected region) -->
+    <div class="form-group" id="country-select-group" style="display:none;">
+        <label class="wod5e">Country</label>
+        <select name="country" id="country-select" class="wod5e">
             {{#each countries}}
-               <option value="{{this}}" {{#if (eq ../country this)}} selected {{/if}}>{{this}}</option>
+               <option value="{{this}}" {{#if (eq ../country this)}}selected{{/if}}>{{this}}</option>
             {{/each}}
         </select>
     </div>
 
     <!-- Clan Selection (for Vampires and Ghouls) -->
-    {{#if (or (eq species 'vampire') (eq species 'ghoul'))}}
-       <div class="form-group">
-        <label>Clan</label>
-        <select name="clan">
+    <div class="form-group" id="clan-select-group" style="display: none;">
+        <label class="wod5e">Clan</label>
+        <select name="clan" class="wod5e">
             {{#each clans}}
-               <option value="{{this}}" {{#if (eq ../clan this)}} selected {{/if}}>{{this}}</option>
+            <option value="{{this}}" {{#if (eq ../clan this)}}selected{{/if}}>{{this}}</option>
             {{/each}}
         </select>
-       </div>
+    </div>
 
-       <!-- Domitor's Clan Selection (for Ghouls only) -->
-       {{#if (eq species 'ghoul')}}
-       <div class="form-group">
-        <label>Domitor's Clan</label>
-        <select name="domitorClan">
+    <!-- Domitor Clan Selection (for Ghouls) -->
+    <div class="form-group" id="domitor-clan-select-group" style="display: none;">
+        <label class="wod5e">Domitor's Clan</label>
+        <select name="domitorClan" class="wod5e">
             {{#each clans}}
-               <option value="{{this}}" {{#if (eq ../domitorClan this)}} selected {{/if}}>{{this}}</option>
+            <option value="{{this}}" {{#if (eq ../domitorClan this)}}selected{{/if}}>{{this}}</option>
             {{/each}}
         </select>
-       </div>
-       {{/if}}
-    {{/if}}
+    </div>
 
     <!-- Challenge Level Selection -->
     <div class="form-group">
-        <label>Challenge Level</label>
+        <label class="wod5e">Challenge Level</label>
         <div class="form-fields">
-            <input type="radio" name="challenge" id="challenge-none" value="none" {{#if (eq challenge 'none')}} checked {{/if}}>
-            <label for="challenge-none">None</label>
+            <input type="radio" name="challenge" id="challenge-none" value="none" {{#if (eq challenge 'none')}}checked{{/if}}>
+            <label for="challenge-none" class="wod5e">None</label>
 
-            <input type="radio" name="challenge" id="challenge-minor" value="minor" {{#if (eq challenge 'minor')}} checked {{/if}}>
-            <label for="challenge-minor">Minor</label>
+            <input type="radio" name="challenge" id="challenge-minor" value="minor" {{#if (eq challenge 'minor')}}checked{{/if}}>
+            <label for="challenge-minor" class="wod5e">Minor</label>
 
-            <input type="radio" name="challenge" id="challenge-medium" value="medium" {{#if (eq challenge 'medium')}} checked {{/if}}>
-            <label for="challenge-medium">Medium</label>
+            <input type="radio" name="challenge" id="challenge-medium" value="medium" {{#if (eq challenge 'medium')}}checked{{/if}}>
+            <label for="challenge-medium" class="wod5e">Medium</label>
 
-            <input type="radio" name="challenge" id="challenge-major" value="major" {{#if (eq challenge 'major')}} checked {{/if}}>
-            <label for="challenge-major">Major</label>
+            <input type="radio" name="challenge" id="challenge-major" value="major" {{#if (eq challenge 'major')}}checked{{/if}}>
+            <label for="challenge-major" class="wod5e">Major</label>
         </div>
     </div>
 
     <!-- Submit Button and Loading Spinner -->
     <div class="form-group">
-        <button type="submit">Generate SPC</button>
+        <button type="submit" class="wod5e">Generate SPC</button>
         <div class="spinner" id="loading-spinner" style="display: none;">Loading...</div>
     </div>
 </form>

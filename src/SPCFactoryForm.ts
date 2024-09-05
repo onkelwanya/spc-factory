@@ -1,5 +1,6 @@
 /** Script Imports */
 import { generateSPCContent, createPrompt } from './spcContentGenerator';
+import { handleRegionAndCountrySelection, handleSpeciesAndClanSelection } from './spcFormHandlers';
 
 /** Type Imports */
 import { SPCActorData } from './types/SPCActorData';
@@ -23,10 +24,17 @@ export class SPCFactoryForm extends FormApplication<
       title: 'SPC Factory',
       template: 'modules/spc-factory/src/templates/spc-factory.hbs',
       classes: ['spc-factory'],
-      width: 400,
+      width: 450,
       height: 'auto',
       closeOnSubmit: true,
     }) as FormApplicationOptions;
+  }
+
+  activateListeners(html: JQuery<HTMLElement>): void {
+    super.activateListeners(html);
+
+    handleRegionAndCountrySelection(html);
+    handleSpeciesAndClanSelection(html);
   }
 
   async getData(): Promise<SPCFormData> {

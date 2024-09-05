@@ -79,9 +79,9 @@ export function createPrompt(formData: SPCFormData): string {
 
   const narrativeElements = `
   1.	**Name**: Generate a name appropriate to the character’s region of origin, unless one is provided.
-	2.	**Character Traits**: Provide a bullet-point list of up to 10 traits that describe the character’s personality and behavior, taking into account their species, region, and disposition. Ensure that this list is concise and does not have run-on sentences.
-	3.	**Background**: Provide a brief, bullet-point summary of the character’s backstory, including relevant life events, experiences, and any notable skills or abilities. Keep this backstory short and concise without run-on sentences.
-	-	If the character is a ghoul, ensure that the backstory highlights something that makes them particularly useful or valuable to their vampire master (e.g., a specific skill, loyalty, or personality trait).`;
+	2.	**Character Traits**: Provide a bullet-point list of up to 10 traits that describe the character’s personality and behavior, taking into account their species, region, and disposition. Keep the description to maximum 2 sentences per bullet point.
+	3.	**Background**: Provide a brief, bullet-point summary of the character’s backstory, including relevant life events, experiences, and any notable skills or abilities. Avoid generic descriptions. Write a maximum of 2 sentences per bullet point.
+	-	If the character is a ghoul, ensure that the backstory highlights something that makes them particularly useful or valuable to their vampire master (e.g., a specific skill, loyalty, or personality trait). Avoid any generic traits. For example: If the character is especially loyal, describe how their loyalty presents itself instead of just writing that they are loyal.`;
 
   const outputStructure = `
   Please structure the output as JSON with the following fields:

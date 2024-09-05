@@ -72,7 +72,7 @@ export class SPCFactoryForm extends FormApplication<
 
       const parsedContent = JSON.parse(generatedContent);
 
-      const name = formData.name == null ? parsedContent.name : formData.name;
+      const name = !formData.name ? parsedContent.name : formData.name;
       const traits = (parsedContent.traits as string[]) || [];
       const background = (parsedContent.background as string[]) || [];
       const standardDicePools = parsedContent.standarddicepools;

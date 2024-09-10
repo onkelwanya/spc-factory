@@ -10,7 +10,8 @@
     "format:ci": "prettier --write src/**/*.{ts,js}",
     "build": "webpack --config webpack.prod.cjs",
     "build:dev": "npm run lint && npm run format && webpack --config webpack.dev.cjs",
-    "extract-translations": "npx i18next-parser \"src/**/*.{js,ts,hbs}\""
+    "ingest-compendia": "node dist/scripts/injestCompendia.js",
+    "ingest-compendia:dev": "npx ts-node stc/scripts/ingestCompendia.ts"
   },
   "keywords": [],
   "author": "",

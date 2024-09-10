@@ -151,3 +151,9 @@ export const DISCIPLINES = {
   Ventrue: ['Dominate', 'Fortitude', 'Presence'],
   'Thin-Blood': ['Thin-Blood Alchemy'],
 };
+
+/** Logging and error handling common strings */
+export const LOG_STR = {
+  prefix: 'SPC Factory |',
+  ingest: 'Data Ingest |',
+};

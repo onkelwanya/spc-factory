@@ -18,6 +18,6 @@
       "@league-of-foundry-developers/foundry-vtt-types"
     ]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/scripts/*ts"],
   "exclude": ["node_modules", "dist"]
 }

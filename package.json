@@ -1,16 +1,16 @@
 {
   "name": "spc-factory",
-  "version": "0.6.0",
+  "version": "0.7.2",
   "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/**/*.{ts,js}",
-    "format": "prettier --write src/**/*.{ts,js} && prettier --write dist/**/*.js",
+    "format": "prettier --write src/**/*.{ts,js}",
     "format:ci": "prettier --write src/**/*.{ts,js}",
     "build": "webpack --config webpack.prod.cjs",
     "build:dev": "npm run lint && npm run format && webpack --config webpack.dev.cjs",
-    "extract-translations": "npx i18next-parser \"src/**/*.{js,ts,hbs}\""
+    "update-version": "npx tsx src/scripts/updateVersion.ts"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,7 @@
   "devDependencies": {
     "@eslint/js": "^9.9.1",
     "@league-of-foundry-developers/foundry-vtt-types": "^9.280.0",
+    "@types/node": "^22.5.5",
     "@typescript-eslint/eslint-plugin": "^8.4.0",
     "copy-webpack-plugin": "^12.0.2",
     "eslint": "^9.9.1",
@@ -27,6 +28,7 @@
     "globals": "^15.9.0",
     "prettier": "^3.3.3",
     "ts-loader": "^9.5.1",
+    "tsconfig-paths": "^4.2.0",
     "typescript-eslint": "^8.4.0",
     "webpack": "^5.94.0",
     "webpack-cli": "^5.1.4",

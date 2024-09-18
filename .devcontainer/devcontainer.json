@@ -20,7 +20,7 @@
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
-			"extensions": ["esbenp.prettier-vscode", "christian-kohler.path-intellisense"]
+			"extensions": ["esbenp.prettier-vscode", "christian-kohler.path-intellisense", "streetsidesoftware.code-spell-checker", "ms-vscode.vscode-typescript-next", "Orta.vscode-jest", "christian-kohler.path-intellisense", "esbenp.prettier-vscode"]
 		}
 	},
 

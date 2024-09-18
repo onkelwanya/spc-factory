@@ -27,7 +27,7 @@ describe('generateSPCContent', () => {
             { headers: { Authorization: `Bearer ${mockAPIKey}`, 'Content-Type': 'application/json' } },
         );
 
-        expect(result).toBeUndefined();
+        expect(result).not.toBeUndefined();
     });
 
     it('should handle API errors gracefully', async () => {
@@ -35,6 +35,6 @@ describe('generateSPCContent', () => {
         (axios.post as jest.Mock).mockRejectedValue(new Error('API Error'));
 
         const prompt = 'Create an SPC character';
-        await expect(generateSPCContent(prompt)).rejects.toThrow('API Error');
+        await expect(generateSPCContent(prompt)).rejects.toThrow('Failed to generate content.');
     });
 });

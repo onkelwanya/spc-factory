@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import * as readline from 'readline/promises';
 
-async function updateVersion(filePath: string, newVersion: string) {
+export async function updateVersion(filePath: string, newVersion: string) {
   const fileData = JSON.parse(await fs.readFile(filePath, 'utf-8'));
   fileData.version = newVersion;
 
@@ -16,7 +16,7 @@ async function updateVersion(filePath: string, newVersion: string) {
   console.log(`Updated version in ${filePath} to ${newVersion}`);
 }
 
-async function main() {
+export async function main() {
   console.clear();
   console.log('SPC Factory Version Update Script.');
 
@@ -32,7 +32,7 @@ async function main() {
     output: process.stdout,
   });
 
-  const answer = await rl.question('Do you want to update the verion? (y/n): ');
+  const answer = await rl.question('Do you want to update the version? (y/n): ');
 
   if (answer.toLowerCase() === 'y' || answer.toLowerCase() === 'yes') {
     const newVersion = await rl.question(

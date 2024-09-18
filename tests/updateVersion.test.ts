@@ -89,6 +89,8 @@ describe('Version Update Script', () => {
       mockReadline.question.mockResolvedValueOnce('n');
       const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
 
+      (fs.readFile as jest.Mock).mockResolvedValueOnce(JSON.stringify({ version: '1.0.0' }));
+
       const { main } = await import('../src/scripts/updateVersion');
       await main();
 
@@ -103,7 +105,7 @@ describe('Version Update Script', () => {
       };
       const newVersion = '2.0.0';
 
-      (fs.readFile as jest.Mock).mockResolvedValueOnce(JSON.stringify(mockModuleData));
+      (fs.readFile as jest.Mock).mockResolvedValue(JSON.stringify(mockModuleData));
       (fs.writeFile as jest.Mock).mockResolvedValueOnce(undefined);
 
       mockReadline.question
@@ -115,9 +117,9 @@ describe('Version Update Script', () => {
       const { main } = await import('../src/scripts/updateVersion');
       await main();
 
-      expect(mockReadline.question).toHaveBeenCalledWith('Do you want to update the verion? (y/n): ');
-      expect(mockReadline.question).toHaveBeenCalledWith(`Enter the new version (current verision: 1.0.0): `);
-      expect(fs.writeFile).toHaveBeenCalledTimes(2); // Writes to module.json and package.json
+      expect(mockReadline.question).toHaveBeenCalledWith('Do you want to update the version? (y/n): ');
+      expect(mockReadline.question).toHaveBeenCalledWith(`Enter the new version (current version: 1.0.0): `);
+      expect(fs.writeFile).toHaveBeenCalledTimes(2); 
 
       mockReadline.close();
       consoleSpy.mockRestore();

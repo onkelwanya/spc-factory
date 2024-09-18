@@ -36,7 +36,7 @@ export async function main() {
 
   if (answer.toLowerCase() === 'y' || answer.toLowerCase() === 'yes') {
     const newVersion = await rl.question(
-      `Enter the new version (current verision: ${moduleData.version}): `
+      `Enter the new version (current version: ${moduleData.version}): `
     );
 
     await updateVersion(moduleFilePath, newVersion);

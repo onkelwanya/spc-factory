@@ -31,10 +31,13 @@ describe('generateSPCContent', () => {
     });
 
     it('should handle API errors gracefully', async () => {
+        const consoleErrorMock = jest.spyOn(console, 'error').mockImplementation(() => {});
         (getOpenAIApiKey as jest.Mock).mockReturnValue('test-api-key');
         (axios.post as jest.Mock).mockRejectedValue(new Error('API Error'));
 
         const prompt = 'Create an SPC character';
         await expect(generateSPCContent(prompt)).rejects.toThrow('Failed to generate content.');
+
+        consoleErrorMock.mockRestore();
     });
 });

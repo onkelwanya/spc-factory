@@ -10,7 +10,8 @@
     "format:ci": "prettier --write src/**/*.{ts,js}",
     "build": "webpack --config webpack.prod.cjs",
     "build:dev": "npm run lint && npm run format && webpack --config webpack.dev.cjs",
-    "update-version": "npx tsx src/scripts/updateVersion.ts"
+    "update-version": "npx tsx src/scripts/updateVersion.ts",
+    "deploy:dev": "npx tsx src/scripts/copyDevVersionToStaging.ts"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@eslint/js": "^9.9.1",
     "@league-of-foundry-developers/foundry-vtt-types": "^9.280.0",
+    "@types/fs-extra": "^11.0.4",
     "@types/jest": "^29.5.13",
     "@types/node": "^22.5.5",
     "@typescript-eslint/eslint-plugin": "^8.4.0",
@@ -26,6 +28,7 @@
     "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "fs-extra": "^11.2.0",
     "globals": "^15.9.0",
     "jest": "^29.7.0",
     "prettier": "^3.3.3",

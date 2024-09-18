@@ -32,7 +32,9 @@ export async function main() {
     output: process.stdout,
   });
 
-  const answer = await rl.question('Do you want to update the version? (y/n): ');
+  const answer = await rl.question(
+    'Do you want to update the version? (y/n): '
+  );
 
   if (answer.toLowerCase() === 'y' || answer.toLowerCase() === 'yes') {
     const newVersion = await rl.question(

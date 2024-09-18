@@ -151,3 +151,8 @@ export const DISCIPLINES = {
   Ventrue: ['Dominate', 'Fortitude', 'Presence'],
   'Thin-Blood': ['Thin-Blood Alchemy'],
 };
+
+/** JSON data paths */
+export const DATA_PATHS = {
+  NAMES: 'modules/spc-factory/data/names/',
+};

@@ -83,6 +83,8 @@ describe('Version Update Script', () => {
         close: jest.fn(),
       };
       (readline.createInterface as jest.Mock).mockReturnValue(mockReadline);
+
+      jest.clearAllMocks();
     });
     it('should exit if the user declines version update', async () => {
       
@@ -106,7 +108,7 @@ describe('Version Update Script', () => {
       const newVersion = '2.0.0';
 
       (fs.readFile as jest.Mock).mockResolvedValue(JSON.stringify(mockModuleData));
-      (fs.writeFile as jest.Mock).mockResolvedValueOnce(undefined);
+      (fs.writeFile as jest.Mock).mockResolvedValue(undefined);
 
       mockReadline.question
         .mockResolvedValueOnce('y')
